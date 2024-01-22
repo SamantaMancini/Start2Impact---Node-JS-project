@@ -7,6 +7,9 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const userRouter = require('./routes/userRoutes');
+const interactionRouter = require('./routes/interactionsRoutes');
+const postRouter = require('./routes/postRoutes');
 
 
 const app = express();
@@ -38,12 +41,14 @@ app.use(xss());
 // Prevent parameter pollution
 app.use(
   hpp({
-    whitelist: ['createdAt', 'name', 'email', 'surname'],
+    whitelist: ['createdAt', 'nickname', 'age', 'city'],
   }),
 );
 
 // ROUTES
-
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/interactions', interactionRouter);
+app.use('/api/v1/posts', postRouter);
 
 // set route for all no match routes
 app.all('*', (req, res, next) => {

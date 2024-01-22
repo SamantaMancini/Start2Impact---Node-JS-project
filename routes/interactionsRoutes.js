@@ -5,7 +5,7 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(interactionController.getAllInteraction)
+  .get(interactionController.getAllInteractions)
   .post(interactionController.createInteraction);
 
 router

@@ -5,8 +5,8 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 
 const dotenv = require('dotenv');
-const Product = require('../../models/productModel');
-const Order = require('../../models/orderModel');
+const Interaction = require('../../models/interactionModel');
+const Post = require('../../models/postModel');
 const User = require('../../models/userModel');
 
 dotenv.config({ path: './config.env' });
@@ -18,17 +18,17 @@ async function dbConnect() {
 dbConnect().catch((err) => console.log(err));
 
 // HERE CHANGE THE FILE NAME TO CHOOSE AND IMPORT MANUALLY
-const products = JSON.parse(
-  fs.readFileSync(`${__dirname}/products.json`, 'utf-8'),
+const posts = JSON.parse(
+  fs.readFileSync(`${__dirname}/posts.json`, 'utf-8'),
 );
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
-const orders = JSON.parse(fs.readFileSync(`${__dirname}/orders.json`, 'utf-8'));
+const interactions = JSON.parse(fs.readFileSync(`${__dirname}/interactions.json`, 'utf-8'));
 
 const importData = async () => {
   try {
-    await Product.create(products);
+    await Post.create(posts);
     await User.create(users, { validateBeforeSave: false });
-    await Order.create(orders);
+    await Interaction.create(interactions);
     console.log('Data succsefully loaded! ❎ ');
     process.exit();
   } catch (err) {
@@ -38,8 +38,8 @@ const importData = async () => {
 
 const deleteData = async () => {
   try {
-    await Product.deleteMany();
-    await Order.deleteMany();
+    await Post.deleteMany();
+    await Interaction.deleteMany();
     await User.deleteMany();
     console.log('Data succsefully deleted! ✅ ');
     process.exit();
