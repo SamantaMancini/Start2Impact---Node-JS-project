@@ -27,26 +27,14 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, 'A user must have a e-mail'],
-    trim: true,
-    maxlength: [
-      40,
-      'A user e-mail must have less or equal then 30 characters',
-    ],
-    minlength: [
-      2,
-      'A user e-mail must have more or equal then 2 characters',
-    ],
-    validate: {
-      validator: (val) => validator.isAlpha(val, ['en-US'], { ignore: `'` }), //" =" => " " & "-"
-      message: 'A user e-mail must only contain characters between A-Z',
-    },
+    unique: true,
+    lowercase: true,
+    validate: [validator.isEmail, 'Please provide a valid email'],
   },
   
 },
 });
-userSchema.statics.findByEmail = function (email) {
-  return this.findOne({ email });
-};
+
 // Creazione del modello basato sullo schema definito
 const User = mongoose.model('User', userSchema);
 

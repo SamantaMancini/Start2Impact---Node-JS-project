@@ -1,102 +1,93 @@
 const Product = require('../models/productModel');
 
-// CREATE - Aggiungi un nuovo utente
-exports.createProduct= async (req, res) => {
+exports.getProducts = async (req, res, next) => {
+  try {
+     let query = Product.find();
+  
+      // Filtraggio
+     const queryObj = { ...req.query };
+     let queryStr = JSON.stringify(queryObj)
+     .replace(/\b(gte|gt|lte|lt|in|ne)\b/g, (match) => `${match}`);
+     query = query.find(JSON.parse(queryStr));
+  
+      // Ordinamento
+     const sortBy = req.query.sort ? req.query.sort.split(',').join(' ') : '-createdAt';
+     query = query.sort(sortBy);
+  
+     const products = await query;
+     if (!products) {
+      return next({ status: 404, message: 'No products found'});
+     }
+  
+     res.status(200).json({
+     status: 'success',
+     results: products.length,
+     data: {
+         products,
+       }
+     })
+    } catch (error) {
+     console.error('Error while loading products', error);
+     res.status(500).json({ error: 'Error while loading products'});
+    }
+  }
+
+  exports.addProduct = async (req, res, next) => {
     try {
-      const newProduct = await Product.create(req.body);
+      const product = await Product.create(req.body);
+
       res.status(201).json({
         status: 'success',
-        data: [
-            newProduct
-        ] 
-      });
+        data: product,
+      })
     } catch (error) {
-      res.status(400).json({
-        status: 'error',
-        message: error.message
-      });
+      console.error('Error while creating order', error);
+      res.status(500).json({ error: 'Error while creating order'});
     }
-  };
-  
-  // READ - Ottieni un singolo utente
-  exports.getProduct = async (req, res, next) => {
+  }
+
+  exports.getSingleProduct = async (req, res, next) => {
     try {
-      const product  = await Product.findById(req.params.id);
-      if (!product) {
-        return next(new Error('Product not found'));
-      }
-      res.status(200).json({ status: 'success', data: [ product ] });
-    } catch (error) {
-      next(error);
-    }
-  };
-  
-  // READ - Ottieni tutti gli utenti o filtra per nome
-  exports.getAllProducts = async (req, res) => {
-    try {
-      let query;
-      if (req.query.name) {
-        query = { name: req.query.name };
-      }
-      const products = await Product.find(query);
-      res.status(200).json({
-        status: 'success',
-        results: products.length,
-        data: [ products ]
-      });
-    } catch (error) {
-      res.status(500).json({
-        status: 'error',
-        message: error.message
-      });
-    }
-  };
-  
-  // UPDATE - Modifica un utente esistente
-  exports.updateProduct = async (req, res) => {
-    try {
-      const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true
-      });
-      if (!updatedProduct) {
-        return res.status(404).json({
-          status: 'error',
-          message: 'Product not update'
-        });
-      }
-      res.status(200).json({
-        status: 'success',
-        data: {
-          post: updatedProduct
+        let query = Product.findById(req.params.id);
+        const product = await query;
+        if (!product) {
+         return next({ status: 404, message: 'No product found' });
         }
-      });
-    } catch (error) {
-      res.status(400).json({
-        status: 'error',
-        message: error.message
-      });
-    }
-  };
-  
-  // DELETE - Cancella un utente
-  exports.deleteProduct = async (req, res) => {
-    try {
-      const deletedProduct = await Product.findByIdAndDelete(req.params.id);
-      if (!deletedProduct) {
-        return res.status(404).json({
-          status: 'error',
-          message: 'Product not deleted'
-        });
+        res.status(200).json({ status: 'success', data: { product } });
+      } catch (error) {
+        console.error('Error while retrieving product', error);
+        res.status(500).json({ error: 'Error while retrieving product' });
       }
-      res.status(204).json({
-        status: 'success',
-        data: null
-      });
-    } catch (error) {
-      res.status(400).json({
-        status: 'error',
-        message: error.message
-      });
     }
+
+    exports.updateProduct = async(req, res, next) => {
+      try {
+        const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+          new: true,
+          runValidatos: true,
+        });
+        if (!product) {
+          return next({ status: 404, message: 'No product found'})
+        }
+        res.status(200).json({
+          status: 'succes',
+          data: order,
+        });
+      } catch (error) {
+        console.error('Error while updating product', error);
+        res.status(500).json({ error: 'Error while updating product' });
+      }
+    }
+
+    exports.deleteProduct = async (req, res, next) => {
+      try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    if (!product) {
+      return next({ status: 404, message: 'No product found'});
+    }
+    res.status(204).json({ status: 'success', data: null });
+  } catch (error) {
+    console.error('Error while deleting product', error);
+    res.status(500).json({ error: 'Error while deleting product' });   
+  }
   };

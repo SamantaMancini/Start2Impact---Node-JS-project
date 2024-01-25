@@ -1,30 +1,38 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const OrderSchema = new mongoose.Schema(
+const orderSchema = new mongoose.Schema(
   {
-    userID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-    productID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-      required: true,
+    users: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, 'Order must contain one or more users.'],
+      },
+    ],
+    products: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Product',
+        required: [true, 'Order must contain one or more products.'],
+      },
+    ],
+    createdAt: {
+      type: Date,
+      default: Date.now(),
     },
   },
-  { timestamps: true }
 );
-OrderSchema.statics.findById = function (userID) {
-  return this.findOne({ userID: userID });
-};
-OrderSchema.statics.findByIdAndDate = function (userId, targetDate) {
-  return this.findOne({
-    userID: userId,
-    createdAt: {
-      $gte: targetDate,
-      $lt: new Date(targetDate.getTime() + 86400000), // Per cercare nella stessa data
-    },
+
+orderSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'users',
+    select: 'name',
   });
-};
-module.exports = mongoose.model("Order", OrderSchema);
+  this.populate({
+    path: 'products',
+    select: 'name',
+  });
+  next();
+});
+
+module.exports = mongoose.model("Order", orderSchema);
