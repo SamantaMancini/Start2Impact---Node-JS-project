@@ -2,12 +2,7 @@ const User = require('../models/userModel');
 
 exports.getUsers = async (req, res, next) => {
   try {
-    let query = User.find();
-    if (req.query.names) {
-      const names = req.query.names.split(',');
-      query = query.where('name').in(names);
-    }
-    const users = await query;
+    const users = await User.find(req.query);
 
     if (users.length === 0) {
       return next({ status: 404, message: 'No users found' });

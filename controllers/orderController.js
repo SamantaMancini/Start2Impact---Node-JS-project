@@ -1,25 +1,13 @@
 const Order = require('../models/orderModel');
 
-exports.getOrders = async (req, res, next) => {
+exports.getOrders = async (req, res) => {
   try {
     let query = Order.find();
 
-    // Filtraggio
-    const queryObj = { ...req.query };
-    const excludedFields = ['page', 'sort', 'limit', 'fields'];
-    excludedFields.forEach((el) => delete queryObj[el]);
-    let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt|in|ne)\b/g, (match) => `$${match}`);
-    query = query.find(JSON.parse(queryStr));
-
-    // Ordinamento
-    const sortBy = req.query.sort ? req.query.sort.split(',').join(' ') : '-createdAt';
-    query = query.sort(sortBy);
-
-    const orders = await query;
-    if (orders.length === 0) {
-      return next({ status: 404, message: 'No orders found' });
+    if (req.query.createdAt) {
+      query = query.where('createdAt').equals(req.query.createdAt)
     }
+    const orders = await query
 
     res.status(200).json({
       status: 'success',
@@ -29,66 +17,78 @@ exports.getOrders = async (req, res, next) => {
       },
     });
   } catch (error) {
-    console.error('Error while loading orders', error);
-    res.status(500).json({ error: 'Error while loading orders' });
+    res.status(404).json({ 
+      status: 'fail', 
+      message: error 
+    });
   }
 };
 
-  exports.addOrder = async (req, res, next) => {
+  exports.addOrder = async (req, res) => {
     try {
-      const order = await Order.create(req.body);
+      const newOrder = await Order.create(req.body);
 
       res.status(201).json({
         status: 'success',
-        data: order,
+        data: {
+          order: newOrder
+        } 
       })
     } catch (error) {
-      res.status(400).json({ error: error.message});
+      res.status(400).json({
+        status: 'fail',
+        message: 'Invalid order sent'
+      });
     }
   }
 
-  exports.getSingleOrder = async (req, res, next) => {
+  exports.getSingleOrder = async (req, res) => {
     try {
-        let query = Order.findById(req.params.id);
-        if (req.query.populate) {
-           query = query.populate(req.query.populate);
-        }
-        const order = await query;
-        if (!order) {
-         return next({ status: 404, message: 'No order found' });
-        }
-        res.status(200).json({ status: 'success', data: { order } });
+        const order = await Order.findById(req.params.id);
+        res.status(200).json({ 
+          status: 'success', 
+          data: {
+             order 
+            }});
       } catch (error) {
-        res.status(500).json({ error: 'Error while retrieving order' });
+        res.status(404).json({ 
+          status: 'fail', 
+          message: error
+         });
       }
     }
 
-    exports.updateOrder = async(req, res, next) => {
+    exports.updateOrder = async(req, res) => {
       try {
         const order = await Order.findByIdAndUpdate(req.params.id, req.body, {
           new: true,
           runValidatos: true,
         });
-        if (!order) {
-          return next({ status: 404, message: 'No order found'})
-        }
-        res.status(201).json({
+        res.status(200).json({
           status: 'succes',
-          data: order,
+          data: { 
+            order 
+          },
         });
       } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(404).json({
+            status: 'fail',
+            message: error
+          });
       }
     }
 
-    exports.deleteOrder = async (req, res, next) => {
+    exports.deleteOrder = async (req, res) => {
       try {
-    const order = await Order.findByIdAndDelete(req.params.id);
-    if (!order) {
-      return next({ status: 404, message: 'No order found'});
-    }
-    res.status(204).json({ status: 'success', data: null });
+      await Order.findByIdAndDelete(req.params.id);
+      res.status(204).json({ 
+      status: 'success', 
+      data: null 
+    });
   } catch (error) {
-    res.status(500).json({ error: 'Error while deleting order' });   
+    res.status(404).json({ 
+      status: 'fail',
+      message: error 
+    });   
   }
   };
