@@ -2,36 +2,29 @@ const User = require('../models/userModel');
 
 exports.getUsers = async (req, res, next) => {
   try {
-     let query = User.find();
-  
-      // Filtraggio
-     const queryObj = { ...req.query };
-     let queryStr = JSON.stringify(queryObj)
-     .replace(/\b(gte|gt|lte|lt|in|ne)\b/g, (match) => `${match}`);
-     query = query.find(JSON.parse(queryStr));
-  
-      // Ordinamento
-     const sortBy = req.query.sort ? req.query.sort.split(',').join(' ') : '-createdAt';
-     query = query.sort(sortBy);
-  
-     const users = await query;
-     if (!users) {
-      return next({ status: 404, message: 'No users found'});
-     }
-  
-     res.status(200).json({
-     status: 'success',
-     results: users.length,
-     data: {
-         users,
-       }
-     })
-    } catch (error) {
-     console.error('Error while loading users', error);
-     res.status(500).json({ error: 'Error while loading users'});
+    let query = User.find();
+    if (req.query.names) {
+      const names = req.query.names.split(',');
+      query = query.where('name').in(names);
     }
-  }
+    const users = await query;
 
+    if (users.length === 0) {
+      return next({ status: 404, message: 'No users found' });
+    }
+
+    res.status(200).json({
+      status: 'success',
+      results: users.length,
+      data: {
+        users,
+      },
+    });
+  } catch (error) {
+    console.error('Error while loading users', error);
+    res.status(500).json({ error: 'Error while loading users' });
+  }
+};
   exports.addUser = async (req, res, next) => {
     try {
       const user = await User.create(req.body);
@@ -41,8 +34,7 @@ exports.getUsers = async (req, res, next) => {
         data: user,
       })
     } catch (error) {
-      console.error('Error while creating user', error);
-      res.status(500).json({ error: 'Error while creating user'});
+      res.status(400).json({ error: error.message});
     }
   }
 
@@ -55,7 +47,6 @@ exports.getUsers = async (req, res, next) => {
         }
         res.status(200).json({ status: 'success', data: { user } });
       } catch (error) {
-        console.error('Error while retrieving user', error);
         res.status(500).json({ error: 'Error while retrieving user' });
       }
     }
@@ -69,13 +60,12 @@ exports.getUsers = async (req, res, next) => {
         if (!user) {
           return next({ status: 404, message: 'No user found'})
         }
-        res.status(200).json({
+        res.status(201).json({
           status: 'succes',
           data: user,
         });
       } catch (error) {
-        console.error('Error while updating user', error);
-        res.status(500).json({ error: 'Error while updating user' });
+        res.status(400).json({ error: error.message });
       }
     }
 

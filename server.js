@@ -3,23 +3,23 @@ const dotenv = require('dotenv');
 const app = require('./app');
 
 dotenv.config({ path: './config.env' });
+const DB = process.env.DATABASE.replace(
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
+)
 
-// MOONGOOSE 7
 async function dbConnect() {
   try {
-    await mongoose.connect(process.env.DB);
-    console.log('Db successfullt connected !!!');
+    await mongoose.connect(DB);
+    console.log('Db successfully connected !!!');
   } catch (error) {
-    console.log('Database connection error:', error.message)
+    console.log('Database connection error:', error.message);
   }
-
 }
 
-dbConnect()
-  const port = process.env.PORT || 5000;
-  
-mongoose.connection.once('connected', () => {
-  app.listen(port, () => {
-    console.log(`App running on ${port}...`);
-  });
-});
+const port = process.env.PORT || 5000;
+    app.listen(port, () => {
+      console.log(`App running on ${port}...`);
+    });
+    
+dbConnect();

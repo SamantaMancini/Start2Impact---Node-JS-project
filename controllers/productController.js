@@ -4,16 +4,6 @@ exports.getProducts = async (req, res, next) => {
   try {
      let query = Product.find();
   
-      // Filtraggio
-     const queryObj = { ...req.query };
-     let queryStr = JSON.stringify(queryObj)
-     .replace(/\b(gte|gt|lte|lt|in|ne)\b/g, (match) => `${match}`);
-     query = query.find(JSON.parse(queryStr));
-  
-      // Ordinamento
-     const sortBy = req.query.sort ? req.query.sort.split(',').join(' ') : '-createdAt';
-     query = query.sort(sortBy);
-  
      const products = await query;
      if (!products) {
       return next({ status: 404, message: 'No products found'});
@@ -27,7 +17,6 @@ exports.getProducts = async (req, res, next) => {
        }
      })
     } catch (error) {
-     console.error('Error while loading products', error);
      res.status(500).json({ error: 'Error while loading products'});
     }
   }
@@ -41,8 +30,7 @@ exports.getProducts = async (req, res, next) => {
         data: product,
       })
     } catch (error) {
-      console.error('Error while creating order', error);
-      res.status(500).json({ error: 'Error while creating order'});
+      res.status(400).json({ error: error.message });
     }
   }
 
@@ -55,7 +43,6 @@ exports.getProducts = async (req, res, next) => {
         }
         res.status(200).json({ status: 'success', data: { product } });
       } catch (error) {
-        console.error('Error while retrieving product', error);
         res.status(500).json({ error: 'Error while retrieving product' });
       }
     }
@@ -69,13 +56,12 @@ exports.getProducts = async (req, res, next) => {
         if (!product) {
           return next({ status: 404, message: 'No product found'})
         }
-        res.status(200).json({
+        res.status(201).json({
           status: 'succes',
-          data: order,
+          data: product,
         });
       } catch (error) {
-        console.error('Error while updating product', error);
-        res.status(500).json({ error: 'Error while updating product' });
+        res.status(400).json({ error: error.message });
       }
     }
 
@@ -87,7 +73,6 @@ exports.getProducts = async (req, res, next) => {
     }
     res.status(204).json({ status: 'success', data: null });
   } catch (error) {
-    console.error('Error while deleting product', error);
     res.status(500).json({ error: 'Error while deleting product' });   
   }
   };

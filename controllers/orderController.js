@@ -2,35 +2,37 @@ const Order = require('../models/orderModel');
 
 exports.getOrders = async (req, res, next) => {
   try {
-     let query = Order.find();
-  
-      // Filtraggio
-     const queryObj = { ...req.query };
-     let queryStr = JSON.stringify(queryObj)
-     .replace(/\b(gte|gt|lte|lt|in|ne)\b/g, (match) => `${match}`);
-     query = query.find(JSON.parse(queryStr));
-  
-      // Ordinamento
-     const sortBy = req.query.sort ? req.query.sort.split(',').join(' ') : '-createdAt';
-     query = query.sort(sortBy);
-  
-     const orders = await query;
-     if (!orders) {
-      return next({ status: 404, message: 'No orders found'});
-     }
-  
-     res.status(200).json({
-     status: 'success',
-     results: orders.length,
-     data: {
-         orders,
-       }
-     })
-    } catch (error) {
-     console.error('Error while loading orders', error);
-     res.status(500).json({ error: 'Error while loading orders'});
+    let query = Order.find();
+
+    // Filtraggio
+    const queryObj = { ...req.query };
+    const excludedFields = ['page', 'sort', 'limit', 'fields'];
+    excludedFields.forEach((el) => delete queryObj[el]);
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt|in|ne)\b/g, (match) => `$${match}`);
+    query = query.find(JSON.parse(queryStr));
+
+    // Ordinamento
+    const sortBy = req.query.sort ? req.query.sort.split(',').join(' ') : '-createdAt';
+    query = query.sort(sortBy);
+
+    const orders = await query;
+    if (orders.length === 0) {
+      return next({ status: 404, message: 'No orders found' });
     }
+
+    res.status(200).json({
+      status: 'success',
+      results: orders.length,
+      data: {
+        orders,
+      },
+    });
+  } catch (error) {
+    console.error('Error while loading orders', error);
+    res.status(500).json({ error: 'Error while loading orders' });
   }
+};
 
   exports.addOrder = async (req, res, next) => {
     try {
@@ -41,8 +43,7 @@ exports.getOrders = async (req, res, next) => {
         data: order,
       })
     } catch (error) {
-      console.error('Error while creating order', error);
-      res.status(500).json({ error: 'Error while creating order'});
+      res.status(400).json({ error: error.message});
     }
   }
 
@@ -58,7 +59,6 @@ exports.getOrders = async (req, res, next) => {
         }
         res.status(200).json({ status: 'success', data: { order } });
       } catch (error) {
-        console.error('Error while retrieving order', error);
         res.status(500).json({ error: 'Error while retrieving order' });
       }
     }
@@ -72,13 +72,12 @@ exports.getOrders = async (req, res, next) => {
         if (!order) {
           return next({ status: 404, message: 'No order found'})
         }
-        res.status(200).json({
+        res.status(201).json({
           status: 'succes',
           data: order,
         });
       } catch (error) {
-        console.error('Error while updating order', error);
-        res.status(500).json({ error: 'Error while updating order' });
+        res.status(400).json({ error: error.message });
       }
     }
 
@@ -90,7 +89,6 @@ exports.getOrders = async (req, res, next) => {
     }
     res.status(204).json({ status: 'success', data: null });
   } catch (error) {
-    console.error('Error while deleting order', error);
     res.status(500).json({ error: 'Error while deleting order' });   
   }
   };
