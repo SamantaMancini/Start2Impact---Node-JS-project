@@ -2,7 +2,7 @@ const express = require('express');
 const orderController = require('../controllers/orderController');
 const orderProductController = require('../controllers/orderProductController');
 
-const router = express.Router({ mergeParams: true });
+const router = express.Router({ mergeParams: true});
 
 router
   .route('/')
