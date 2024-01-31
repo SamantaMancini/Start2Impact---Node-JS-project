@@ -1,5 +1,5 @@
 # Orizon API Node JS: 
-
+API built from scratch with Node.js and Express for the travel agency Orizon.
 ## :bulb: How it works
 
 ## :computer: Languages
