@@ -44,7 +44,7 @@ After the installation, you're ready to go.
 
 ### 3 - Environment variable
 
-Copy the `.env.example file` in the project's root folder and rename it `config.env`, add YOUR URL DATABASE (in MongoDB click on "Database" in the left-hand menu, click on "Connect" and then on "Drivers" copy and paste the string) edit <password> in <PASSWORD>.
+Copy the `.env.example file` in the project's root folder and rename it `config.env`, add YOUR URL DATABASE (in MongoDB click on "Database" in the left-hand menu, click on "Connect" and then on "Drivers" copy and paste the string).
 add YOUR DATABASE_PASSWORD.
 
 ### 4 - Start it!
