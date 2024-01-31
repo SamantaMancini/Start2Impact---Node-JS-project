@@ -19,11 +19,11 @@
 - prettier, eslint
 
 ## MongoDB: 
-1- Go to [MongoDB](https://www.mongodb.com/atlas/database) and click "Try free" to start the account creation process.
-2- Create an account or log in if you already have a MongoDB account. 
-3- After logging in, click on "Build a Cluster" to start creating a new cluster, which is the environment where your MongoDB databes will run.
-4- During the cluster creation, you will have the opportunity to customize settings such as the cluster location, size and advanced options.
-5- After creating the cluster, click on "Database Access" in the left-hand menu and then "Add New Database User" to create a new database user.
+- Go to [MongoDB](https://www.mongodb.com/atlas/database) and click "Try free" to start the account creation process.
+- Create an account or log in if you already have a MongoDB account. 
+- After logging in, click on "Build a Cluster" to start creating a new cluster, which is the environment where your MongoDB databes will run.
+- During the cluster creation, you will have the opportunity to customize settings such as the cluster location, size and advanced options.
+- After creating the cluster, click on "Database Access" in the left-hand menu and then "Add New Database User" to create a new database user.
 Here you can define the username and password for accessing the database.
 
 ## :floppy_disk: Installation
