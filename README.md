@@ -68,8 +68,8 @@ add YOUR DATABASE_PASSWORD.
 
 - `npm run start` for production
 - `npm run dev` for development
-
-Use CRUD method for testing.
+If it works should show the text: Db connected successfully!!! 
+Use CRUD method on postman for try the APIs.
 
 ## :e-mail: Contact Me
 
