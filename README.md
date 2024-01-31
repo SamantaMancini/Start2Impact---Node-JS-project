@@ -44,7 +44,11 @@ After the installation, you're ready to go.
 
 ### 3 - Scripts
 
-Copy and paste these scripts: 
+Copy and paste these scripts in the package.json: 
+"scripts": {
+    "dev": "SET NODE_ENV=development&&nodemon server.js",
+    "start": "SET NODE_ENV=production&&nodemon server.js"
+  },
 
 ### 4 - Environment variable
 
