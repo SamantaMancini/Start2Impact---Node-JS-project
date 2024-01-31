@@ -1,6 +1,7 @@
 const Order = require('../models/orderModel');
+const AppError = require('../utils/appError');
 
-exports.getOrders = async (req, res) => {
+exports.getOrders = async (req, res, next) => {
   try {
     let query = Order.find();
 
@@ -15,16 +16,14 @@ exports.getOrders = async (req, res) => {
       data: {
         orders,
       },
+      requestedAt: req.requestTime,
     });
   } catch (error) {
-    res.status(404).json({ 
-      status: 'fail', 
-      message: error 
-    });
+    next(error);
   }
 };
 
-  exports.addOrder = async (req, res) => {
+  exports.addOrder = async (req, res, next) => {
     try {
       const newOrder = await Order.create(req.body);
 
@@ -35,35 +34,37 @@ exports.getOrders = async (req, res) => {
         } 
       })
     } catch (error) {
-      res.status(400).json({
-        status: 'fail',
-        message: 'Invalid order sent'
-      });
+      next(error);
     }
   }
 
-  exports.getSingleOrder = async (req, res) => {
+  exports.getSingleOrder = async (req, res, next) => {
     try {
         const order = await Order.findById(req.params.id);
+
+        if (!order) {
+          return next (new AppError('No order found with that ID', 404));
+        }
         res.status(200).json({ 
           status: 'success', 
           data: {
              order 
             }});
       } catch (error) {
-        res.status(404).json({ 
-          status: 'fail', 
-          message: error
-         });
+        next(error);
       }
     }
 
-    exports.updateOrder = async(req, res) => {
+    exports.updateOrder = async(req, res, next) => {
       try {
         const order = await Order.findByIdAndUpdate(req.params.id, req.body, {
           new: true,
           runValidatos: true,
         });
+
+        if (!order) {
+          return next(new AppError('No order found with that ID', 404));
+        }
         res.status(200).json({
           status: 'succes',
           data: { 
@@ -71,24 +72,21 @@ exports.getOrders = async (req, res) => {
           },
         });
       } catch (error) {
-        res.status(404).json({
-            status: 'fail',
-            message: error
-          });
+        next(error);
       }
     }
 
-    exports.deleteOrder = async (req, res) => {
+    exports.deleteOrder = async (req, res, next) => {
       try {
-      await Order.findByIdAndDelete(req.params.id);
+      const order = await Order.findByIdAndDelete(req.params.id);
+      if (!order) {
+        return next(new AppError('No order found with that ID', 404))
+      }
       res.status(204).json({ 
       status: 'success', 
       data: null 
     });
   } catch (error) {
-    res.status(404).json({ 
-      status: 'fail',
-      message: error 
-    });   
+    next(error);
   }
-  };
+}

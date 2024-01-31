@@ -4,6 +4,9 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
+const hpp = require('hpp');
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
 const userRouter = require('./routes/userRoutes');
 const orderRouter = require('./routes/orderRoutes');
 const productRouter = require('./routes/productRoutes');
@@ -35,6 +38,12 @@ app.use(mongoSanitize());
 // Data sanitazation agains XSS Deprecate but actually working
 app.use(xss());
 
+// Prevent parameter pollution
+app.use(
+  hpp({
+    whitelist: ['createdAt', 'name', 'email', 'surname'],
+  }),
+);
 
 // ROUTES
 app.use('/api/v1/users', userRouter);
@@ -43,21 +52,11 @@ app.use('/api/v1/products', productRouter);
 
 // set route for all no match routes
 app.all('*', (req, res, next) => {
-  const error = new Error(`Can't find ${req.originalUrl} on this server`);
-  error.status = 'fail';
-  error.statusCode = 404;
-  next(error);
+  next(new AppError(`Can't find${req.originalUrl} on this server`, 404));
 });
 
-app.use((error, req, res, next) => {
-  error.statusCode = error.statusCode || 500;
-  error.status = error.status || 'error';
-
-  res.status(error.statusCode).json({
-    status: error.status,
-    message: error.message
-  })
-})
+//Global Error Handling Middleware - 4 argument express recognize is a error middleware
+app.use(globalErrorHandler);
 
 
 

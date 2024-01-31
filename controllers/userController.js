@@ -1,12 +1,9 @@
 const User = require('../models/userModel');
+const AppError = require('../utils/appError');
 
 exports.getUsers = async (req, res, next) => {
   try {
     const users = await User.find(req.query);
-
-    if (users.length === 0) {
-      return next({ status: 404, message: 'No users found' });
-    }
 
     res.status(200).json({
       status: 'success',
@@ -16,8 +13,7 @@ exports.getUsers = async (req, res, next) => {
       },
     });
   } catch (error) {
-    console.error('Error while loading users', error);
-    res.status(500).json({ error: 'Error while loading users' });
+    next(error)
   }
 };
   exports.addUser = async (req, res, next) => {
@@ -29,7 +25,7 @@ exports.getUsers = async (req, res, next) => {
         data: user,
       })
     } catch (error) {
-      res.status(400).json({ error: error.message});
+      next(error)
     }
   }
 
@@ -38,11 +34,16 @@ exports.getUsers = async (req, res, next) => {
         let query = User.findById(req.params.id);
         const user = await query;
         if (!user) {
-         return next({ status: 404, message: 'No user found' });
+         next(new AppError('No user found with that ID', 404));
         }
-        res.status(200).json({ status: 'success', data: { user } });
+        res.status(200).json({ 
+          status: 'success',
+           data: { 
+            user 
+          } 
+        });
       } catch (error) {
-        res.status(500).json({ error: 'Error while retrieving user' });
+        next(error);
       }
     }
 
@@ -53,14 +54,14 @@ exports.getUsers = async (req, res, next) => {
           runValidatos: true,
         });
         if (!user) {
-          return next({ status: 404, message: 'No user found'})
+          return next(new AppError('No user found with that ID', 404))
         }
         res.status(201).json({
           status: 'succes',
           data: user,
         });
       } catch (error) {
-        res.status(400).json({ error: error.message });
+        next(error)
       }
     }
 
@@ -68,12 +69,14 @@ exports.getUsers = async (req, res, next) => {
       try {
     const user = await User.findByIdAndDelete(req.params.id);
     if (!user) {
-      return next({ status: 404, message: 'No order found'});
+      return next(new AppError('No user found with that ID', 404));
     }
-    res.status(204).json({ status: 'success', data: null });
+    res.status(204).json({ 
+      status: 'success', 
+      data: null 
+    });
   } catch (error) {
-    console.error('Error while deleting user', error);
-    res.status(500).json({ error: 'Error while deleting user' });   
+    next(error) 
   }
-  };
+};
 

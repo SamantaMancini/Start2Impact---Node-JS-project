@@ -9,17 +9,16 @@ const DB = process.env.DATABASE.replace(
 )
 
 async function dbConnect() {
-  try {
     await mongoose.connect(DB);
     console.log('Db successfully connected !!!');
-  } catch (error) {
-    console.log('Database connection error:', error.message);
-  }
 }
+dbConnect();
 
 const port = process.env.PORT || 5000;
-    app.listen(port, () => {
+
+app.listen(port, () => {
       console.log(`App running on ${port}...`);
     });
+ 
+
     
-dbConnect();
