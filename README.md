@@ -50,7 +50,7 @@ add YOUR DATABASE_PASSWORD.
 ### 4 - Start it!
 
 - `npm run start` for production
-- `npm dev` for development
+- `npm run dev` for development
 
 ### 5 - Open in the browser
 
