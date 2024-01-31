@@ -24,7 +24,7 @@ const limiter = rateLimit({
   max: 500,
   windowMs: 60 * 60 * 1000,
   message: 'Too many request from this IP, please try again in an hour',
-}); // 429 Error
+}); 
 
 app.use('/api', limiter);
 
@@ -34,7 +34,7 @@ app.use(express.json({ limit: '10kb' })); // Middleware add the data from the bo
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
 
-// Data sanitazation agains XSS Deprecate but actually working
+// Data sanitazation agains XSS 
 app.use(xss());
 
 // Prevent parameter pollution
