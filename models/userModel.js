@@ -18,7 +18,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'A user must have a surname'],
     trim: true,
-    maxlength: [40, 'A user surname must have less or equal then 30 characters'],
+    maxlength: [
+      40,
+      'A user surname must have less or equal then 30 characters',
+    ],
     minlength: [2, 'A user surname must have more or equal then 2 characters'],
     validate: {
       validator: (val) => validator.isAlpha(val, ['en-US'], { ignore: `'` }), //" =" => " " & "-"

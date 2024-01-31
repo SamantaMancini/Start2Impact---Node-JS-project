@@ -1,5 +1,5 @@
 //Global Error Handling Middleware
-const AppError = require('../utils/appError')
+const AppError = require('../utils/appError');
 
 const handleCastErrorDB = (err) => {
   const message = `Invalid ${err.path}: ${err.value}`;

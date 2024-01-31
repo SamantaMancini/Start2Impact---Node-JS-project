@@ -11,7 +11,6 @@ const userRouter = require('./routes/userRoutes');
 const orderRouter = require('./routes/orderRoutes');
 const productRouter = require('./routes/productRoutes');
 
-
 const app = express();
 // GLOBAL MIDLLEWAREs
 //Set security HTTP headers
@@ -57,7 +56,5 @@ app.all('*', (req, res, next) => {
 
 //Global Error Handling Middleware - 4 argument express recognize is a error middleware
 app.use(globalErrorHandler);
-
-
 
 module.exports = app;
