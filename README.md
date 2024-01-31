@@ -42,25 +42,17 @@ After the installation, you're ready to go.
 
 `npm install`
 
-### 3 - Scripts
-
-Copy and paste these scripts in the package.json: 
-"scripts": {
-    "dev": "SET NODE_ENV=development&&nodemon server.js",
-    "start": "SET NODE_ENV=production&&nodemon server.js"
-  },
-
-### 4 - Environment variable
+### 3 - Environment variable
 
 Copy the `.env.example file` in the project's root folder and rename it `config.env`, add YOUR URL DATABASE (in MongoDB click on "Database" in the left-hand menu, click on "Connect" and then on "Drivers" copy and paste the string).
 add YOUR DATABASE_PASSWORD.
 
-### 5 - Start it!
+### 4 - Start it!
 
 - `npm run start` for production
 - `npm run dev` for development
 
-### 6 - Postman
+### 5 - Postman
 For convenience, i recommend using Postman. Here is the link to the project:
 
 ## :e-mail: Contact Me
