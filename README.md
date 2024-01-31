@@ -1,6 +1,23 @@
 # Orizon API Node JS: 
 API built from scratch with Node.js and Express for the travel agency Orizon.
 ## :bulb: How it works
+In the test folder, I have already imported everything to test the APIs, but you will need a MongoDB account to proceed; in the next step, there will be instructions to create one.
+For convenience, i recommend using Postman. Here is the link to the project: 
+## Routes:
+- api/v1/users (users route)
+- api/v1/products (products route)
+- api/v1/orders (orders route)
+- api/v1/users/:id (ID user)
+- api/v1/products/:id (ID product)
+- api/v1/orders/:id (ID order)
+- api/v1/orders?createdAt={date} (filter orders by date)
+- api/v1/orders/getOrdersByProductName?productNames={name} (filter orders by product names)
+
+## CRUD methods: 
+- GET (Read all files or ID)
+- POST (Create a new file)
+- PATCH (Edit a file)
+- DELETE (delete a file)
 
 ## :computer: Languages
 - Javascript
@@ -51,9 +68,8 @@ add YOUR DATABASE_PASSWORD.
 
 - `npm run start` for production
 - `npm run dev` for development
-
-### 5 - Postman
-For convenience, i recommend using Postman. Here is the link to the project:
+If it works should show the text: Db connected successfully!!! 
+Use CRUD method on postman for try the APIs.
 
 ## :e-mail: Contact Me
 
