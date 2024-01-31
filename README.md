@@ -31,7 +31,7 @@ Here you can define the username and password for accessing the database.
 
 First of all, you need Node.js installed.
 If you don't have it, you can download it here:
-[Node.js](https://nodejs.org/en/download/)<br>
+[Node.js](https://nodejs.org/en)<br>
 After the installation, you're ready to go.
 
 ### 1 - Clone the repository
