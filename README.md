@@ -10,7 +10,7 @@ For convenience, i recommend using Postman. Here is the link to the project:
 - api/v1/users/:id (ID user)
 - api/v1/products/:id (ID product)
 - api/v1/orders/:id (ID order)
-- api/v1/orders?createdAt={data} (filter orders by date)
+- api/v1/orders?createdAt={date} (filter orders by date)
 - api/v1/orders/getOrdersByProductName?productNames={name} (filter orders by product names)
 ## :computer: Languages
 - Javascript
