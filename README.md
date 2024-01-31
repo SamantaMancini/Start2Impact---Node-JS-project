@@ -12,6 +12,13 @@ For convenience, i recommend using Postman. Here is the link to the project:
 - api/v1/orders/:id (ID order)
 - api/v1/orders?createdAt={date} (filter orders by date)
 - api/v1/orders/getOrdersByProductName?productNames={name} (filter orders by product names)
+
+## CRUD methods: 
+- GET (Read all files or ID)
+- POST (Create a new file)
+- PATCH (Edit a file)
+- DELETE (delete a file)
+
 ## :computer: Languages
 - Javascript
 - Node JS
@@ -62,8 +69,7 @@ add YOUR DATABASE_PASSWORD.
 - `npm run start` for production
 - `npm run dev` for development
 
-### 5 - CRUD (Create, Read, Update, Delete)
-
+Use CRUD method for testing.
 
 ## :e-mail: Contact Me
 
