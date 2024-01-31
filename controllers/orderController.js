@@ -1,6 +1,7 @@
 const Order = require('../models/orderModel');
 const AppError = require('../utils/appError');
 
+// Get all orders
 exports.getOrders = async (req, res, next) => {
   try {
     let query = Order.find();
@@ -23,6 +24,7 @@ exports.getOrders = async (req, res, next) => {
   }
 };
 
+// Add a new order
 exports.addOrder = async (req, res, next) => {
   try {
     const newOrder = await Order.create(req.body);
@@ -38,6 +40,7 @@ exports.addOrder = async (req, res, next) => {
   }
 };
 
+// Get a single order by ID
 exports.getSingleOrder = async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id);
@@ -56,6 +59,7 @@ exports.getSingleOrder = async (req, res, next) => {
   }
 };
 
+// Update an existing order
 exports.updateOrder = async (req, res, next) => {
   try {
     const order = await Order.findByIdAndUpdate(req.params.id, req.body, {
@@ -77,6 +81,7 @@ exports.updateOrder = async (req, res, next) => {
   }
 };
 
+// Delete an order by ID
 exports.deleteOrder = async (req, res, next) => {
   try {
     const order = await Order.findByIdAndDelete(req.params.id);

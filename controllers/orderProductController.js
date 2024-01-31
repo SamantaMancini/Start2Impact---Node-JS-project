@@ -1,11 +1,10 @@
 const Order = require('../models/orderModel');
 const AppError = require('../utils/appError');
 
+// Get all orders by product names
 exports.getOrdersByProductNames = async (req, res, next) => {
   try {
     const productNames = req.query.productNames.split(',');
-
-    // Look for orders that contain **all** of the supplied product names
     const orders = await Order.find({});
     if (!orders) {
       return next(new AppError('Error getting Orders Names', 404));

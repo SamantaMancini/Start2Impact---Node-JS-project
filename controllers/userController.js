@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const AppError = require('../utils/appError');
 
+// Get all users
 exports.getUsers = async (req, res, next) => {
   try {
     const users = await User.find(req.query);
@@ -16,6 +17,8 @@ exports.getUsers = async (req, res, next) => {
     next(error);
   }
 };
+
+// Add a new user
 exports.addUser = async (req, res, next) => {
   try {
     const user = await User.create(req.body);
@@ -29,6 +32,7 @@ exports.addUser = async (req, res, next) => {
   }
 };
 
+// Get a single user by ID
 exports.getSingleUser = async (req, res, next) => {
   try {
     let query = User.findById(req.params.id);
@@ -47,6 +51,7 @@ exports.getSingleUser = async (req, res, next) => {
   }
 };
 
+// Update an existing user
 exports.updateUser = async (req, res, next) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
@@ -65,6 +70,7 @@ exports.updateUser = async (req, res, next) => {
   }
 };
 
+// Delete a user by ID
 exports.deleteUser = async (req, res, next) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);

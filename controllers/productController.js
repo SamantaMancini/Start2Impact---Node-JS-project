@@ -1,6 +1,7 @@
 const Product = require('../models/productModel');
 const AppError = require('../utils/appError');
 
+// Get all products
 exports.getProducts = async (req, res, next) => {
   try {
     let query = Product.find();
@@ -19,6 +20,7 @@ exports.getProducts = async (req, res, next) => {
   }
 };
 
+// Add a new product
 exports.addProduct = async (req, res, next) => {
   try {
     const product = await Product.create(req.body);
@@ -32,6 +34,7 @@ exports.addProduct = async (req, res, next) => {
   }
 };
 
+// Get a single product by ID
 exports.getSingleProduct = async (req, res, next) => {
   try {
     let query = Product.findById(req.params.id);
@@ -50,6 +53,7 @@ exports.getSingleProduct = async (req, res, next) => {
   }
 };
 
+// Update an existing product
 exports.updateProduct = async (req, res, next) => {
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -68,6 +72,7 @@ exports.updateProduct = async (req, res, next) => {
   }
 };
 
+// Delete a product by ID
 exports.deleteProduct = async (req, res, next) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
