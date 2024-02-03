@@ -17,8 +17,8 @@ const productSchema = new mongoose.Schema({
     minlength: [3, 'A product name must have more or equal then 3 characters'],
     // Validate that the product name contains only alphabetic characters
     validate: {
-      validator: (val) => validator.isAlpha(val, ['en-US'], { ignore: '-' }), 
-     // Error message for invalid product name
+      validator: (val) => validator.isAlpha(val, ['en-US'], { ignore: '-' }),
+      // Error message for invalid product name
       message: 'A product name must only contain characters between A-Z',
     },
   },

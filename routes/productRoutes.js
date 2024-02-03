@@ -9,7 +9,7 @@ router
   .get(productController.getProducts)
   .post(productController.addProduct);
 
-  // Route for getting , updating and deleting a single product by its id
+// Route for getting , updating and deleting a single product by its id
 router
   .route('/:id')
   .get(productController.getSingleProduct)

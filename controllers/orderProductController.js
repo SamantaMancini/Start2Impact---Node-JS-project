@@ -11,7 +11,7 @@ exports.getOrdersByProductNames = async (req, res, next) => {
     }
 
     const filteredOrders = orders.filter((order) =>
-        order.products.some((product) => productNames.includes(product.name)),
+      order.products.some((product) => productNames.includes(product.name)),
     );
 
     return res.status(200).json({

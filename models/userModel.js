@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     // Max length of 40 characters for the user's name
     maxlength: [40, 'A user name must have less or equal then 30 characters'],
-   // Min length of 2 characters for the user's name
+    // Min length of 2 characters for the user's name
     minlength: [2, 'A user name must have more or equal then 2 characters'],
     // Validate that the user's name contains only alphabetic characters
     validate: {
@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
       40,
       'A user surname must have less or equal then 30 characters',
     ],
-     // Min length of 2 characters for the user's surname
+    // Min length of 2 characters for the user's surname
     minlength: [2, 'A user surname must have more or equal then 2 characters'],
     validate: {
       validator: (val) => validator.isAlpha(val, ['en-US'], { ignore: `'` }), //" =" => " " & "-"

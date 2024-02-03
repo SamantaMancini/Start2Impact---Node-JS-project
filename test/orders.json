@@ -1,223 +1,223 @@
 [
   {
-      "_id": "65be3daa97863b196a55a66d",
-      "users": [
-          {
-              "_id": "65b75e5c9d50c3508ef6a818",
-              "name": "Mila"
-          }
-      ],
-      "products": [
-          {
-              "_id": "65b2be395cabacc48227464b",
-              "name": "Jamaica"
-          },
-          {
-              "_id": "65b766625e24c1cd479570df",
-              "name": "Europa"
-          },
-          {
-              "_id": "65b7669c5e24c1cd479570e1",
-              "name": "Caraibi"
-          }
-      ],
-      "createdAt": "2024-02-03T13:12:24.254Z",
-      "__v": 0
+    "_id": "65be3daa97863b196a55a66d",
+    "users": [
+      {
+        "_id": "65b75e5c9d50c3508ef6a818",
+        "name": "Mila"
+      }
+    ],
+    "products": [
+      {
+        "_id": "65b2be395cabacc48227464b",
+        "name": "Jamaica"
+      },
+      {
+        "_id": "65b766625e24c1cd479570df",
+        "name": "Europa"
+      },
+      {
+        "_id": "65b7669c5e24c1cd479570e1",
+        "name": "Caraibi"
+      }
+    ],
+    "createdAt": "2024-02-03T13:12:24.254Z",
+    "__v": 0
   },
   {
-      "_id": "65be3e4f97863b196a55a672",
-      "users": [
-          {
-              "_id": "65b75ef49d50c3508ef6a81b",
-              "name": "Luca"
-          }
-      ],
-      "products": [
-          {
-              "_id": "65b766ae5e24c1cd479570e3",
-              "name": "Tropici"
-          },
-          {
-              "_id": "65b766bc5e24c1cd479570e5",
-              "name": "Africa"
-          },
-          {
-              "_id": "65b7669c5e24c1cd479570e1",
-              "name": "Caraibi"
-          }
-      ],
-      "createdAt": "2024-02-03T13:12:24.254Z",
-      "__v": 0
+    "_id": "65be3e4f97863b196a55a672",
+    "users": [
+      {
+        "_id": "65b75ef49d50c3508ef6a81b",
+        "name": "Luca"
+      }
+    ],
+    "products": [
+      {
+        "_id": "65b766ae5e24c1cd479570e3",
+        "name": "Tropici"
+      },
+      {
+        "_id": "65b766bc5e24c1cd479570e5",
+        "name": "Africa"
+      },
+      {
+        "_id": "65b7669c5e24c1cd479570e1",
+        "name": "Caraibi"
+      }
+    ],
+    "createdAt": "2024-02-03T13:12:24.254Z",
+    "__v": 0
   },
   {
-      "_id": "65be3f5897863b196a55a677",
-      "users": [
-          {
-              "_id": "65b75f289d50c3508ef6a81d",
-              "name": "John"
-          },
-          {
-              "_id": "65b75f639d50c3508ef6a81f",
-              "name": "Jane"
-          }
-      ],
-      "products": [
-          {
-              "_id": "65b766c65e24c1cd479570e7",
-              "name": "Asia"
-          },
-          {
-              "_id": "65b766bc5e24c1cd479570e5",
-              "name": "Africa"
-          },
-          {
-              "_id": "65b766e35e24c1cd479570e9",
-              "name": "Sud-America"
-          }
-      ],
-      "createdAt": "2024-02-03T13:12:24.254Z",
-      "__v": 0
+    "_id": "65be3f5897863b196a55a677",
+    "users": [
+      {
+        "_id": "65b75f289d50c3508ef6a81d",
+        "name": "John"
+      },
+      {
+        "_id": "65b75f639d50c3508ef6a81f",
+        "name": "Jane"
+      }
+    ],
+    "products": [
+      {
+        "_id": "65b766c65e24c1cd479570e7",
+        "name": "Asia"
+      },
+      {
+        "_id": "65b766bc5e24c1cd479570e5",
+        "name": "Africa"
+      },
+      {
+        "_id": "65b766e35e24c1cd479570e9",
+        "name": "Sud-America"
+      }
+    ],
+    "createdAt": "2024-02-03T13:12:24.254Z",
+    "__v": 0
   },
   {
-      "_id": "65be41ae97863b196a55a692",
-      "users": [
-          {
-              "_id": "65b75f8b9d50c3508ef6a821",
-              "name": "Michael"
-          },
-          {
-              "_id": "65b75fbe9d50c3508ef6a823",
-              "name": "Emily"
-          },
-          {
-              "_id": "65b760149d50c3508ef6a825",
-              "name": "Olivia"
-          }
-      ],
-      "products": [
-          {
-              "_id": "65b766c65e24c1cd479570e7",
-              "name": "Asia"
-          },
-          {
-              "_id": "65b766bc5e24c1cd479570e5",
-              "name": "Africa"
-          },
-          {
-              "_id": "65b766e35e24c1cd479570e9",
-              "name": "Sud-America"
-          }
-      ],
-      "createdAt": "2024-02-03T13:12:24.254Z",
-      "__v": 0
+    "_id": "65be41ae97863b196a55a692",
+    "users": [
+      {
+        "_id": "65b75f8b9d50c3508ef6a821",
+        "name": "Michael"
+      },
+      {
+        "_id": "65b75fbe9d50c3508ef6a823",
+        "name": "Emily"
+      },
+      {
+        "_id": "65b760149d50c3508ef6a825",
+        "name": "Olivia"
+      }
+    ],
+    "products": [
+      {
+        "_id": "65b766c65e24c1cd479570e7",
+        "name": "Asia"
+      },
+      {
+        "_id": "65b766bc5e24c1cd479570e5",
+        "name": "Africa"
+      },
+      {
+        "_id": "65b766e35e24c1cd479570e9",
+        "name": "Sud-America"
+      }
+    ],
+    "createdAt": "2024-02-03T13:12:24.254Z",
+    "__v": 0
   },
   {
-      "_id": "65be4693bdee3ad410083e5a",
-      "users": [
-          {
-              "_id": "65b7603f9d50c3508ef6a827",
-              "name": "William"
-          }
-      ],
-      "products": [
-          {
-              "_id": "65b766c65e24c1cd479570e7",
-              "name": "Asia"
-          },
-          {
-              "_id": "65b766f95e24c1cd479570eb",
-              "name": "Antartide"
-          }
-      ],
-      "createdAt": "2024-02-03T13:49:55.154Z",
-      "__v": 0
+    "_id": "65be4693bdee3ad410083e5a",
+    "users": [
+      {
+        "_id": "65b7603f9d50c3508ef6a827",
+        "name": "William"
+      }
+    ],
+    "products": [
+      {
+        "_id": "65b766c65e24c1cd479570e7",
+        "name": "Asia"
+      },
+      {
+        "_id": "65b766f95e24c1cd479570eb",
+        "name": "Antartide"
+      }
+    ],
+    "createdAt": "2024-02-03T13:49:55.154Z",
+    "__v": 0
   },
   {
-      "_id": "65be4721bdee3ad410083e5f",
-      "users": [
-          {
-              "_id": "65b760669d50c3508ef6a829",
-              "name": "Ava"
-          }
-      ],
-      "products": [
-          {
-              "_id": "65b766c65e24c1cd479570e7",
-              "name": "Asia"
-          },
-          {
-              "_id": "65b766f95e24c1cd479570eb",
-              "name": "Antartide"
-          }
-      ],
-      "createdAt": "2024-02-03T13:49:55.154Z",
-      "__v": 0
+    "_id": "65be4721bdee3ad410083e5f",
+    "users": [
+      {
+        "_id": "65b760669d50c3508ef6a829",
+        "name": "Ava"
+      }
+    ],
+    "products": [
+      {
+        "_id": "65b766c65e24c1cd479570e7",
+        "name": "Asia"
+      },
+      {
+        "_id": "65b766f95e24c1cd479570eb",
+        "name": "Antartide"
+      }
+    ],
+    "createdAt": "2024-02-03T13:49:55.154Z",
+    "__v": 0
   },
   {
-      "_id": "65be4737bdee3ad410083e61",
-      "users": [
-          {
-              "_id": "65b760949d50c3508ef6a82b",
-              "name": "Alexander"
-          }
-      ],
-      "products": [
-          {
-              "_id": "65b766c65e24c1cd479570e7",
-              "name": "Asia"
-          },
-          {
-              "_id": "65b766f95e24c1cd479570eb",
-              "name": "Antartide"
-          }
-      ],
-      "createdAt": "2024-02-03T13:49:55.154Z",
-      "__v": 0
+    "_id": "65be4737bdee3ad410083e61",
+    "users": [
+      {
+        "_id": "65b760949d50c3508ef6a82b",
+        "name": "Alexander"
+      }
+    ],
+    "products": [
+      {
+        "_id": "65b766c65e24c1cd479570e7",
+        "name": "Asia"
+      },
+      {
+        "_id": "65b766f95e24c1cd479570eb",
+        "name": "Antartide"
+      }
+    ],
+    "createdAt": "2024-02-03T13:49:55.154Z",
+    "__v": 0
   },
   {
-      "_id": "65be476cbdee3ad410083e63",
-      "users": [
-          {
-              "_id": "65b760b79d50c3508ef6a82d",
-              "name": "Sophia"
-          }
-      ],
-      "products": [
-          {
-              "_id": "65b7670a5e24c1cd479570ed",
-              "name": "Mediterraneo"
-          },
-          {
-              "_id": "65b766f95e24c1cd479570eb",
-              "name": "Antartide"
-          }
-      ],
-      "createdAt": "2024-02-03T13:49:55.154Z",
-      "__v": 0
+    "_id": "65be476cbdee3ad410083e63",
+    "users": [
+      {
+        "_id": "65b760b79d50c3508ef6a82d",
+        "name": "Sophia"
+      }
+    ],
+    "products": [
+      {
+        "_id": "65b7670a5e24c1cd479570ed",
+        "name": "Mediterraneo"
+      },
+      {
+        "_id": "65b766f95e24c1cd479570eb",
+        "name": "Antartide"
+      }
+    ],
+    "createdAt": "2024-02-03T13:49:55.154Z",
+    "__v": 0
   },
   {
-      "_id": "65be4c16bdee3ad410083e6b",
-      "users": [
-          {
-              "_id": "65b7624c9d50c3508ef6a836",
-              "name": "Sara"
-          }
-      ],
-      "products": [
-          {
-              "_id": "65b7670a5e24c1cd479570ed",
-              "name": "Mediterraneo"
-          },
-          {
-              "_id": "65b767185e24c1cd479570ef",
-              "name": "Spagna"
-          },
-          {
-              "_id": "65ba6514d43fac3678e3a0ab",
-              "name": "Francia"
-          }
-      ],
-      "createdAt": "2024-02-03T13:49:55.154Z",
-      "__v": 0
+    "_id": "65be4c16bdee3ad410083e6b",
+    "users": [
+      {
+        "_id": "65b7624c9d50c3508ef6a836",
+        "name": "Sara"
+      }
+    ],
+    "products": [
+      {
+        "_id": "65b7670a5e24c1cd479570ed",
+        "name": "Mediterraneo"
+      },
+      {
+        "_id": "65b767185e24c1cd479570ef",
+        "name": "Spagna"
+      },
+      {
+        "_id": "65ba6514d43fac3678e3a0ab",
+        "name": "Francia"
+      }
+    ],
+    "createdAt": "2024-02-03T13:49:55.154Z",
+    "__v": 0
   }
 ]

@@ -1,57 +1,57 @@
 [
   {
-      "_id": "65b2be395cabacc48227464b",
-      "name": "Jamaica",
-      "__v": 0
+    "_id": "65b2be395cabacc48227464b",
+    "name": "Jamaica",
+    "__v": 0
   },
   {
-      "_id": "65b766625e24c1cd479570df",
-      "name": "Europa",
-      "__v": 0
+    "_id": "65b766625e24c1cd479570df",
+    "name": "Europa",
+    "__v": 0
   },
   {
-      "_id": "65b7669c5e24c1cd479570e1",
-      "name": "Caraibi",
-      "__v": 0
+    "_id": "65b7669c5e24c1cd479570e1",
+    "name": "Caraibi",
+    "__v": 0
   },
   {
-      "_id": "65b766ae5e24c1cd479570e3",
-      "name": "Tropici",
-      "__v": 0
+    "_id": "65b766ae5e24c1cd479570e3",
+    "name": "Tropici",
+    "__v": 0
   },
   {
-      "_id": "65b766bc5e24c1cd479570e5",
-      "name": "Africa",
-      "__v": 0
+    "_id": "65b766bc5e24c1cd479570e5",
+    "name": "Africa",
+    "__v": 0
   },
   {
-      "_id": "65b766c65e24c1cd479570e7",
-      "name": "Asia",
-      "__v": 0
+    "_id": "65b766c65e24c1cd479570e7",
+    "name": "Asia",
+    "__v": 0
   },
   {
-      "_id": "65b766e35e24c1cd479570e9",
-      "name": "Sud-America",
-      "__v": 0
+    "_id": "65b766e35e24c1cd479570e9",
+    "name": "Sud-America",
+    "__v": 0
   },
   {
-      "_id": "65b766f95e24c1cd479570eb",
-      "name": "Antartide",
-      "__v": 0
+    "_id": "65b766f95e24c1cd479570eb",
+    "name": "Antartide",
+    "__v": 0
   },
   {
-      "_id": "65b7670a5e24c1cd479570ed",
-      "name": "Mediterraneo",
-      "__v": 0
+    "_id": "65b7670a5e24c1cd479570ed",
+    "name": "Mediterraneo",
+    "__v": 0
   },
   {
-      "_id": "65b767185e24c1cd479570ef",
-      "name": "Spagna",
-      "__v": 0
+    "_id": "65b767185e24c1cd479570ef",
+    "name": "Spagna",
+    "__v": 0
   },
   {
-      "_id": "65ba6514d43fac3678e3a0ab",
-      "name": "Francia",
-      "__v": 0
+    "_id": "65ba6514d43fac3678e3a0ab",
+    "name": "Francia",
+    "__v": 0
   }
 ]
