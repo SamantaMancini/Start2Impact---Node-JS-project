@@ -54,7 +54,7 @@ After the installation, you're ready to go.
 
 ### 4 - Environment variable
 
-Copy the `.env.example file` in the project's root folder and rename it `config.env`, add your string DATABASE (in MongoDB click on "Database" in the left-hand menu, click on "Connect" and then on "Drivers" copy and paste the string). <br/> Example:
+Copy the `.env.example file` in the project's root folder and rename it `config.env`, add your string DATABASE (in MongoDB click on "Database" in the left-hand menu, click on "Connect" and then on "Drivers" copy and paste the string). <br/> Example: <br/>
 `PORT=3000 
 DATABASE=mongodb+srv://dbSamy:<password>@cluster0.1ehyp7z.mongodb.net/ORIZON-API?retryWrites=true&w=majority`
 
