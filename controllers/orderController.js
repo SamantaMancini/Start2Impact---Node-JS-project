@@ -4,11 +4,10 @@ const AppError = require('../utils/appError');
 // Get all orders
 exports.getOrders = async (req, res, next) => {
   try {
-    let query = Order.find();
-
-    if (req.query.createdAt) {
-      query = query.where('createdAt').equals(req.query.createdAt);
-    }
+    let query = req.query.createdAt ? 
+    Order.find({ createdAt: new Date(req.query.createdAt) }) :
+    Order.find({});
+    
     const orders = await query;
 
     res.status(200).json({
@@ -27,7 +26,7 @@ exports.getOrders = async (req, res, next) => {
 // Add a new order
 exports.addOrder = async (req, res, next) => {
   try {
-    const newOrder = await Order.create(req.body);
+    const newOrder = (await Order.create(req.body))
 
     res.status(201).json({
       status: 'success',
