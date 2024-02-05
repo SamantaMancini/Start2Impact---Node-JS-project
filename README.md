@@ -60,7 +60,7 @@ Copy the `.env.example file` in the project's root folder and rename it `config.
 
 ### 5 - Import Data [Optional]
 Imported the JSON data in a file called 'import-API.js' in the 'dev' folder.
-You can use it by using the command `node ./dev/import.API.js --import` to automatically import all the data into the database. Alternatively, you can delete the data using the command `node ./dev/import-API.js --delete`.
+You can use it by using the command `node ./dev/import-API.js --import` to automatically import all the data into the database. Alternatively, you can delete the data using the command `node ./dev/import-API.js --delete`.
 
 ### 6 - Start it!
 
