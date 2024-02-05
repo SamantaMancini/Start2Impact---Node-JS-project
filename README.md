@@ -37,7 +37,7 @@ If you don't have it, you can download it here:
 After the installation, you're ready to go.
 
 ### 1 - Clone the repository
-`git clone https://github.com/SamantaMancini/Start2Impact---Node-JS-project`
+`git clone https://github.com/SamantaMancini/Start2Impact---Node-JS-project.git`
 
 ### 2 - Install the dependencies
 
