@@ -58,7 +58,9 @@ Copy the `.env.example file` in the project's root folder and rename it `config.
 `PORT=3000`
 `DATABASE=mongodb+srv://dbSamy:madadw45y54@cluster0.1ehyp7z.mongodb.net/ORIZON-API?retryWrites=true&w=majority`
 
-### 5 - Import Data
+### 5 - Import Data [Optional]
+Imported the JSON data in a file called 'import-API.js' in the 'dev' folder.
+You can use it by using the command `node ./dev/import.API.js --import` to automatically import all the data into the database. Alternatively, you can delete the data using the command `node ./dev/import-API.js --delete`.
 
 ### 6 - Start it!
 
@@ -66,13 +68,32 @@ Copy the `.env.example file` in the project's root folder and rename it `config.
 - `npm run dev` for development
 
 ### 7 - Postman
+Using a service like Postman, you can test the ENDPOINTS in CRUD mode. For convenience, I'm sharing my project at this link. I have already set the localhost variable to port 3000, but you can delete it and set the port to 5000. It works for both development and production modes.
 
-### 8 - CRUD 
-- GET (Read all files or ID)
-- POST (Create a new file)
-- PATCH (Edit a file)
-- DELETE (delete a file)
+### 8 - CRUD
 
+Example CRUD
+
+for get all users:
+- GET {{LOCALHOST}}/api/v1/users
+
+for create a user:
+- POST {{LOCALHOST}}/api/v1/users
+
+for update a user:
+- PATCH {{LOCALHOST}}/api/v1/users/user:id
+
+for delete a user:
+- DELETE {{LOCALHOST}}/api/v1/users/user:id
+
+for get a product or order by ID:
+- GET {{LOCALHOST}}/api/v1/products/product:id
+
+for get an order by product name:
+- GET {{LOCALHOST}}/api/v1/orders/getOrdersByProductName?productNames={name products}
+
+for get an order by date:
+- GET {{LOCALHOST}}/api/v1/orders?createdAt={order date}
 
 ## :e-mail: Contact Me
 
