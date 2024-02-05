@@ -69,6 +69,7 @@ You can use it by using the command `node ./dev/import-API.js --import` to autom
 
 ### 7 - Postman
 Using a service like Postman, you can test the ENDPOINTS in CRUD mode. For convenience, I'm sharing my project at this link. I have already set the localhost variable to port 3000, but you can delete it and set the port to 5000. It works for both development and production modes.
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/32496480-b99fe1f0-da45-437e-9d4b-c8170f72492e?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D32496480-b99fe1f0-da45-437e-9d4b-c8170f72492e%26entityType%3Dcollection%26workspaceId%3D2d4d3248-42c4-48a2-a817-78423c635e51)
 
 ### 8 - CRUD
 
