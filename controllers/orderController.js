@@ -1,14 +1,14 @@
 const Order = require('../models/orderModel');
 const AppError = require('../utils/appError');
+const APIFeauters = require('../utils/APIFeatures')
 
 // Get all orders
 exports.getOrders = async (req, res, next) => {
   try {
-    let query = req.query.createdAt ? 
-    Order.find({ createdAt: new Date(req.query.createdAt) }) :
-    Order.find({});
-    
-    const orders = await query;
+    //Filtering
+    const features = new APIFeauters(Order.find(), req.query)
+    .filter()
+    const orders = await features.query;
 
     res.status(200).json({
       status: 'success',

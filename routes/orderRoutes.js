@@ -5,7 +5,9 @@ const orderProductController = require('../controllers/orderProductController');
 const router = express.Router({ mergeParams: true });
 
 // Route for getting all orders and adding a new order
-router.route('/').get(orderController.getOrders).post(orderController.addOrder);
+router.route('/')
+  .get(orderController.getOrders)
+  .post(orderController.addOrder);
 
 // Route for getting all orders by product names
 router
